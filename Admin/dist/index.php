@@ -1,5 +1,5 @@
 <?php
-include('./database/database.php');
+include('database/database.php');
 $query = 'SELECT book_id,book_name,athor,book.category_id,Category_name 
     FROM book inner join category on book.category_id = category.category_id;';
 $conn = $pdo->query($query);
@@ -14,7 +14,7 @@ $conn = $pdo->query($query);
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - SB Admin</title>
-    <link href="dist/css/styles.css" rel="stylesheet" />
+    <link href="./css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 </head>
@@ -51,22 +51,11 @@ $conn = $pdo->query($query);
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                            </nav>
-                        </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Pages
@@ -80,9 +69,9 @@ $conn = $pdo->query($query);
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
+                                        <a class="nav-link" href="login.php">Login</a>
+                                        <a class="nav-link" href="register.php">Register</a>
+                                        <a class="nav-link" href="password.php">Forgot Password</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -103,9 +92,21 @@ $conn = $pdo->query($query);
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Charts
                         </a>
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="book/tables.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
+                            Books
+                        </a>
+                        <a class="nav-link" href="category/indexcategory.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Category
+                        </a>
+                        <a class="nav-link" href="book/tables.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Table
+                        </a>
+                        <a class="nav-link" href="book/tables.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Table
                         </a>
                     </div>
                 </div>
@@ -167,9 +168,7 @@ $conn = $pdo->query($query);
                                     <i class="fas fa-chart-area mr-1"></i>
                                     Area Chart Example
                                 </div>
-                                <div class="card-body">
-                                    <canvas id="myAreaChart" width="100%" height="40"></canvas>
-                                </div>
+                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                             </div>
                         </div>
                         <div class="col-xl-6">
@@ -178,9 +177,7 @@ $conn = $pdo->query($query);
                                     <i class="fas fa-chart-bar mr-1"></i>
                                     Bar Chart Example
                                 </div>
-                                <div class="card-body">
-                                    <canvas id="myBarChart" width="100%" height="40"></canvas>
-                                </div>
+                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                             </div>
                         </div>
                     </div>
@@ -225,7 +222,7 @@ $conn = $pdo->query($query);
                                             <th>Salary</th>
                                         </tr>
                                     </tfoot>
-
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -247,13 +244,13 @@ $conn = $pdo->query($query);
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="dist/js/scripts.js"></script>
+    <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="dist/assets/demo/chart-area-demo.js"></script>
-    <script src="dist/assets/demo/chart-bar-demo.js"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-    <script src="dist/assets/demo/datatables-demo.js"></script>
+    <script src="assets/demo/datatables-demo.js"></script>
 </body>
 
 </html>
