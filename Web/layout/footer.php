@@ -17,52 +17,7 @@
 </head>
 
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-branch" href="#"><img src="./image/Logo.svg"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Sản phẩm</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Nam</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Nữ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sale off</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </nav>
-  <!-- Carousel -->
-  <div id="slides" class="carousel slide" data-ride="carousel">
-    <ul class="carousel-indicators">
-      <li data-target="#slides" data-slide-to="0" class="active"></li>
-      <li data-target="#slides" data-slide-to="1"></li>
-      <li data-target="#slides" data-slide-to="2"></li>
-    </ul>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="./image/slide3.jpg">
-      </div>
-      <div class="carousel-item">
-        <img src="./image/slide1.jpg">
-      </div>
-      <div class="carousel-item">
-        <img src="./image/slide2.jpg">
-      </div>
-    </div>
-  </div>
-
+    
   <!-- Footer -->
   <div class="container-fluid padding">
     <div class="row text-center padding">

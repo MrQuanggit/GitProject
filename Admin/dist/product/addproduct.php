@@ -1,10 +1,12 @@
 <?php
 include('../database/database.php');
 
-$query = 'SELECT book_id,book_name,athor,book.category_id,Category_name 
-FROM book inner join category on book.category_id = category.category_id;';
+$query = "SELECT * FROM quangcasestudy.products;";
 $conn = $pdo->query($query);
-$id = $_GET['id'];
+
+$query2 = "SELECT * FROM quangcasestudy.category;";
+$conn2 = $pdo->query($query2);
+$result = $conn2->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +44,7 @@ $id = $_GET['id'];
                     <a class="dropdown-item" href="#">Settings</a>
                     <a class="dropdown-item" href="#">Activity Log</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="../login.php">Logout</a>
                 </div>
             </li>
         </ul>
@@ -94,13 +96,13 @@ $id = $_GET['id'];
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Charts
                         </a>
-                        <a class="nav-link" href="tables.php">
+                        <a class="nav-link" href="indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
+                            Products
                         </a>
-                        <a class="nav-link" href="book/tables.php">
+                        <a class="nav-link" href="../category/indexcategory.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Table
+                            Category
                         </a>
                         <a class="nav-link" href="book/tables.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -127,50 +129,40 @@ $id = $_GET['id'];
                         <li class="breadcrumb-item active">Tables</li>
                     </ol>
                     <div class="card mb-4">
-                        <div class="card-body">
-                            DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                            <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                            .
-                        </div>
-                    </div>
-                    <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
                             DataTable Example
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="feditbook.php" method="post">
-                                    <input type="hidden" name="id" value="<?= $id ?>">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td><input type="text" name="book_name" id=""></td>
-                                                <td><input type="text" name="book_athor" id=""></td>
-                                                <td><input type="text" name="book_category" id=""></td>
-                                                <td></td>
-                                                <td><input type="submit" value="Update"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <form action="faddproduct.php" method="post">
+                                    <span class="input-group-text">Product ID</span>
+                                    <input class="form-control" type="text" name="product_id" id="">
+                                    <span class="input-group-text">Product Name</span>
+                                    <input class="form-control" type="text" name="product_name" id="">
+                                    <span class="input-group-text">Product Description</span>
+                                    <input class="form-control" type="text" name="product_description" id="">
+                                    <span class="input-group-text">Product Style</span>
+                                    <select class="input-group-text" name="category_style" id="">
+                                        <?php foreach($result as $value): ?>
+                                            <option value="<?= $value["category_style"] ?>"><?= $value["category_style"] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <span class="input-group-text">Stock</span>
+                                    <input class="form-control" type="text" name="stock" id="">
+                                    <span class="input-group-text">Image</span>
+                                    <input class="form-control" type="text" name="img" id="">
+                                    <span class="input-group-text">Price</span>
+                                    <input class="form-control" type="text" name="priceEach" id="">
+                                    <span class="input-group-text">Size</span>
+                                    <input class="form-control" type="text" name="size" id="">
+                                    <span class="input-group-text">Slug</span>
+                                    <input class="form-control" type="text" name="slug" id="">
+                                    <span class="input-group-text">Update date</span>
+                                    <input class="form-control" type="text" name="update_date" id="">
+                                    <span class="input-group-text" class="input-group-text">Create date</span>
+                                    <input class="form-control" type="text" name="create_date" id="">
+                                    <input class="input-group-text" type="submit" value="Add New Product">
                                 </form>
                             </div>
                         </div>

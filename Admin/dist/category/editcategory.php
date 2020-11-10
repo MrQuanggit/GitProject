@@ -41,7 +41,7 @@ $id = $_GET['id'];
                     <a class="dropdown-item" href="#">Settings</a>
                     <a class="dropdown-item" href="#">Activity Log</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="../login.php">Logout</a>
                 </div>
             </li>
         </ul>
@@ -93,13 +93,13 @@ $id = $_GET['id'];
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Charts
                         </a>
-                        <a class="nav-link" href="tables.php">
+                        <a class="nav-link" href="../product/indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
+                            Products
                         </a>
-                        <a class="nav-link" href="book/tables.php">
+                        <a class="nav-link" href="../category/indexcategory.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Table
+                            Category
                         </a>
                         <a class="nav-link" href="book/tables.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -144,25 +144,23 @@ $id = $_GET['id'];
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            
-                                            <th>Category_name</th>
-                                            
+                                            <th>Category_Name</th>
+                                            <th>Category_Description</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            
-                                            <th>Category_name</th>
-                                            
+                                            <th>Category_Name</th>
+                                            <th>Category_Description</th>
                                             <th></th>
                                         </tr>
                                     </tfoot>
                                         <tbody>
                                             <tr>
                                                 
-                                                <td><input type="text" name="Category_name" id=""></td>
-                                                
+                                                <td><input type="text" name="category_style" id=""></td>
+                                                <td><input type="text" name="category_description" id=""></td>
                                                 <td><input type="submit" value="Update"></td>
                                             </tr>
                                         </tbody>

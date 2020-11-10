@@ -1,7 +1,7 @@
 <?php
 include('../database/database.php');
 
-$query = 'SELECT * FROM library.category;';
+$query = 'SELECT * FROM quangcasestudy.category;';
 $conn = $pdo->query($query);
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ $conn = $pdo->query($query);
                     <a class="dropdown-item" href="#">Settings</a>
                     <a class="dropdown-item" href="#">Activity Log</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="../login.php">Logout</a>
                 </div>
             </li>
         </ul>
@@ -92,13 +92,13 @@ $conn = $pdo->query($query);
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Charts
                         </a>
-                        <a class="nav-link" href="tables.php">
+                        <a class="nav-link" href="../product/indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
+                            Products
                         </a>
-                        <a class="nav-link" href="book/tables.php">
+                        <a class="nav-link" href="../category/indexcategory.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Table
+                            Category
                         </a>
                         <a class="nav-link" href="book/tables.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -141,32 +141,29 @@ $conn = $pdo->query($query);
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Category_id</th>
-                                            <th>Category_name</th>
-                                            
+                                            <th>Category_Name</th>
+                                            <th>Category_Description</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Category_id</th>
-                                            <th>Category_name</th>
-                                            
+                                            <th>Category_Name</th>
+                                            <th>Category_Description</th>
                                             <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php while ($row = $conn->fetch(PDO::FETCH_ASSOC)) { ?>
                                             <tr>
-                                                <td><?= $row['Category_id'] ?></td>
-                                                <td><?= $row['Category_name'] ?></td>
-                                                
-                                                <td><a href='editcategory.php?id=<?= $row['Category_id'] ?>'>Edit</a> | <a href='deletecategory.php?id=<?= $row['Category_id'] ?>'>Delete</a></td>
+                                                <td><?= $row['category_style'] ?></td>
+                                                <td><?= $row['category_description'] ?></td>
+                                                <td><a href='editcategory.php?id=<?= $row['category_style'] ?>'>Edit</a> | <a href='deletecategory.php?id=<?= $row['category_style'] ?>'>Delete</a></td>
                                             </tr>
 
                                         <?php } ?>
                                     </tbody>
-                                    <a href='addcategory.php'>Add New Book</a>
+                                    <a href='addcategory.php'>Add New Category</a>
                                 </table>
                             </div>
                         </div>

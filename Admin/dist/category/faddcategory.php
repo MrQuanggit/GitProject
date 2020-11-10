@@ -1,8 +1,8 @@
 <?php
-    $id = $_POST['Category_id'];
-    $name = $_POST['Category_name'];
+    $name = $_POST['category_style'];
+    $des = $_POST['category_description'];
     include('../database/database.php');
-    $query = "insert into library.category(Category_id, Category_name) values ('$id', '$name');";
+    $query = "insert into quangcasestudy.category(category_style, category_description) values ('$name', '$des');";
     $pdo->query($query);
     if($query){
         header("location:./indexcategory.php");

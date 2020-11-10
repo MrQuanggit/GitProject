@@ -1,3 +1,36 @@
+<?php include('database/database.php');
+
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['username']) && isset($_POST['userpassword'])) {
+        $myUserName =  isset($_POST['username']) ? $_POST['username'] : null;
+        $myPassword =  isset($_POST['userpassword']) ? $_POST['userpassword'] : null;
+        $query = "SELECT * FROM quangcasestudy.users";
+        $result = $pdo->query($query);
+        $result = $result->fetchAll();
+    }
+    foreach ($result as $value) {
+        if ($value['user_name'] == $myUserName && $value['user_password'] == $myPassword) {
+            $_SESSION['login_user'] = $value;
+            break;
+        }
+    }
+    if (isset($_SESSION['login_user'])) {
+        header('location:index.php');
+    } else {
+        echo '<script language="javascript">';
+        echo 'alert("Bạn không có quyền Admin vào trang này!")';
+        echo '</script>';
+    } 
+}
+
+if (isset($_GET['logout'])) {
+    unset($_SESSION['login_user']);
+    header('location: login.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,29 +53,25 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form method="post" action="">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" />
+                                                <input name="username" class="form-control py-4" id="inputEmailAddress" type="text" placeholder="Enter email address" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                                                <input name="userpassword" class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
                                             </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                    <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                                </div>
-                                            </div>
+
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
+                                                <button type="submit" class="btn btn-primary">Login</button>
+                                                
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>

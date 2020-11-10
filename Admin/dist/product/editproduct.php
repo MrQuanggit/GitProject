@@ -1,9 +1,13 @@
 <?php
 include('../database/database.php');
 
-$query = 'SELECT book_id,book_name,athor,book.category_id,Category_name 
-FROM book inner join category on book.category_id = category.category_id;';
+$query = "SELECT * FROM quangcasestudy.products;";
 $conn = $pdo->query($query);
+
+$query2 = "SELECT * FROM quangcasestudy.category;";
+$conn2 = $pdo->query($query2);
+$result = $conn2->fetchAll();
+$id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +45,7 @@ $conn = $pdo->query($query);
                     <a class="dropdown-item" href="#">Settings</a>
                     <a class="dropdown-item" href="#">Activity Log</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="../login.php">Logout</a>
                 </div>
             </li>
         </ul>
@@ -93,13 +97,13 @@ $conn = $pdo->query($query);
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Charts
                         </a>
-                        <a class="nav-link" href="tables.php">
+                        <a class="nav-link" href="indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
+                            Products
                         </a>
-                        <a class="nav-link" href="book/tables.php">
+                        <a class="nav-link" href="../category/indexcategory.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Table
+                            Category
                         </a>
                         <a class="nav-link" href="book/tables.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -139,39 +143,33 @@ $conn = $pdo->query($query);
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="faddbook.php" method="post">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td><input type="text" name="book_id" id=""></td>
-                                                <td><input type="text" name="book_name" id=""></td>
-                                                <td><input type="text" name="book_athor" id=""></td>
-                                                <td><input type="text" name="book_category" id=""></td>
-                                                <td></td>
-                                                <td><input type="submit" value="Add"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <form action="feditproduct.php" method="post">
+                                    <input type="hidden" name="product_id" value="<?= $id ?>">
+                                    <span class="input-group-text">Product Name</span>
+                                    <input class="form-control" type="text" name="product_name" id="">
+                                    <span class="input-group-text">Product Description</span>
+                                    <input class="form-control" type="text" name="product_description" id="">
+                                    <span class="input-group-text">Product Style</span>
+                                    <select class="input-group-text" name="category_style" id="">
+                                        <?php foreach($result as $value): ?>
+                                            <option value="<?= $value["category_style"] ?>"><?= $value["category_style"] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <span class="input-group-text">Stock</span>
+                                    <input class="form-control" type="text" name="stock" id="">
+                                    <span class="input-group-text">Image</span>
+                                    <input class="form-control" type="text" name="img" id="">
+                                    <span class="input-group-text">Price</span>
+                                    <input class="form-control" type="text" name="priceEach" id="">
+                                    <span class="input-group-text">Size</span>
+                                    <input class="form-control" type="text" name="size" id="">
+                                    <span class="input-group-text">Slug</span>
+                                    <input class="form-control" type="text" name="slug" id="">
+                                    <span class="input-group-text">Update date</span>
+                                    <input class="form-control" type="text" name="update_date" id="">
+                                    <span class="input-group-text" class="input-group-text">Create date</span>
+                                    <input class="form-control" type="text" name="create_date" id="">
+                                    <input class="input-group-text" type="submit" value="Update Product">
                                 </form>
                             </div>
                         </div>

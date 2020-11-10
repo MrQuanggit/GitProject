@@ -1,8 +1,7 @@
 <?php
 include('../database/database.php');
 
-$query = 'SELECT book_id,book_name,athor,book.category_id,Category_name 
-FROM book inner join category on book.category_id = category.category_id;';
+$query = 'SELECT * FROM quangcasestudy.products;';
 $conn = $pdo->query($query);
 ?>
 <!DOCTYPE html>
@@ -41,7 +40,7 @@ $conn = $pdo->query($query);
                     <a class="dropdown-item" href="#">Settings</a>
                     <a class="dropdown-item" href="#">Activity Log</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="../login.php">Logout</a>
                 </div>
             </li>
         </ul>
@@ -93,13 +92,13 @@ $conn = $pdo->query($query);
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Charts
                         </a>
-                        <a class="nav-link" href="tables.php">
+                        <a class="nav-link" href="indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
+                            Products
                         </a>
-                        <a class="nav-link" href="book/tables.php">
+                        <a class="nav-link" href="../category/indexcategory.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Table
+                            Category
                         </a>
                         <a class="nav-link" href="book/tables.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -126,13 +125,6 @@ $conn = $pdo->query($query);
                         <li class="breadcrumb-item active">Tables</li>
                     </ol>
                     <div class="card mb-4">
-                        <div class="card-body">
-                            DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                            <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                            .
-                        </div>
-                    </div>
-                    <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
                             DataTable Example
@@ -142,38 +134,37 @@ $conn = $pdo->query($query);
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Product ID</th>
+                                            <th>Product Name</th>
+                                            <th>Product Style</th>
+                                            <th>Product Img</th>
+                                            <th>Price</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Product ID</th>
+                                            <th>Product Name</th>
+                                            <th>Product Style</th>
+                                            <th>Product Img</th>
+                                            <th>Price</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php while ($row = $conn->fetch(PDO::FETCH_ASSOC)) { ?>
                                             <tr>
-                                                <td><?= $row['book_id'] ?></td>
-                                                <td><?= $row['book_name'] ?></td>
-                                                <td><?= $row['athor'] ?></td>
-                                                <td><?= $row['Category_name'] ?></td>
-                                                <td></td>
-                                                <td><a href='editbook.php?id=<?= $row['book_id'] ?>'>Edit</a> | <a href='deletebook.php?id=<?= $row['book_id'] ?>'>Delete</a></td>
+                                                <td><?= $row['product_id'] ?></td>
+                                                <td><?= $row['product_name'] ?></td>
+                                                <td><?= $row['category_style'] ?></td>
+                                                <td><?= $row['img'] ?></td>
+                                                <td><?= $row['priceEach'] ?></td>
+                                                <td><a href='editproduct.php?id=<?= $row['product_id'] ?>'>Edit</a> | <a href='deleteproduct.php?id=<?= $row['product_id'] ?>'>Delete</a></td>
                                             </tr>
-
                                         <?php } ?>
                                     </tbody>
-                                    <a href='addbook.php'>Add New Book</a>
+                                    <a href='addproduct.php'>Add New Product</a>
                                 </table>
                             </div>
                         </div>
