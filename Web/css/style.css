@@ -1,37 +1,161 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
-html, body {
-	width: 100%;
-	height: 100%;
-	font-family: 'Roboto';
-	color: #222;
-}
-.navbar li a:hover{
-    color: orange !important;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto";
+  color: #222;
 }
 .carousel-inner img {
-	width: 100%;
+  width: 100%;
 }
 .social a {
-	font-size: 2em;/*1em = 16px*/
-	padding: 2rem;/*1rem = 1 "font-size" */
+  font-size: 2em; /*1em = 16px*/
+  padding: 2rem; /*1rem = 1 "font-size" */
 }
 .fa-facebook {
-	color: #3b5998;
+  color: #3b5998;
 }
 .fa-twitter {
-	color: #00aced;	
+  color: #00aced;
 }
 .fa-google-plus-g {
-	color: #dd4b39;
+  color: #dd4b39;
 }
 .fa-instagram {
-	color: #517fa4;
+  color: #517fa4;
 }
 .fa-youtube {
-	color: #bb0000;
+  color: #bb0000;
 }
 footer {
-	background-color: #3f3f3f;
-	color: #d5d5d5;
+  background-color: #3f3f3f;
+  color: #d5d5d5;
 }
+/* .navbar {
+  padding-bottom: 80px;
+} */
+/* .title  {
+
+} */
+/* MenuBar */
+.header {
+  padding: 0 20px;
+  height: 80px;
+  background: rgb(63, 62, 62);
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  margin: 0 0 30px 0;
+  z-index: 1000;
+}
+.logo {
+  line-height: 80px;
+  float: left;
+}
+.menu {
+  float: right;
+  line-height: 80px;
+  padding: 0 25px;
+}
+.menu a {
+  color: white;
+  padding: 0 10px;
+  text-decoration: none;
+  transition: 0.5s;
+}
+.show-menu-btn,
+.hide-menu-btn {
+  transition: 0.5s;
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+}
+.menu a:hover,
+.show-menu-btn,
+.hide-menu-btn {
+  color: #7f8c8d;
+}
+.show-menu-btn {
+  float: right;
+}
+.show-menu-btn i {
+  line-height: 80px;
+  margin-right: 25px;
+}
+#check {
+  position: absolute;
+  visibility: hidden;
+  z-index: -999;
+}
+/* Reponsive Menu */
+@media screen and (max-width: 1100px) {
+  .show-menu-btn,
+  .hide-menu-btn {
+    display: block;
+  }
+  .menu {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    right: -100%;
+    top: 0;
+    padding: 80px 0;
+    line-height: normal;
+    text-align: center;
+    transition: 0.5s;
+  }
+  .menu a {
+    display: block;
+    padding: 20px;
+  }
+  .hide-menu-btn {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+  #check:checked ~ .menu {
+    right: 0;
+  }
+}
+.image {
+  width: 100%;
+}
+
+.image .image2 {
+  display: none;
+}
+
+.image:hover .image2 {
+  display: block;
+}
+
+.image:hover .image1 {
+  display: none;
+}
+.content {
+  text-align: center;
+}
+.content h5 {
+  font: bold;
+}
+.element {
+	padding: 5px;
+}
+.element-info {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+.tintuc {
+	padding: 10px;
+}
+.category{
+  display: flex;
+	justify-content: center;
+  padding: 10px;
+}
+

@@ -19,6 +19,12 @@ $conn = $pdo->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <style>
+        img{
+            text-align: center;
+            align-items: center;
+        }
+    </style>
     <title>Dashboard - SB Admin</title>
     <link href="./css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -202,7 +208,7 @@ $conn = $pdo->query($query);
                                             <th>Product Style</th>
                                             <th>Image</th>
                                             <th>Price</th>
-                                            <th></th>
+                                            <th>Stock</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -211,9 +217,9 @@ $conn = $pdo->query($query);
                                                 <td><?= $row['product_id'] ?></td>
                                                 <td><?= $row['product_name'] ?></td>
                                                 <td><?= $row['category_style'] ?></td>
-                                                <td><?= $row['img'] ?></td>
+                                                <td><img style="width: 10em; align-items: center;" src="<?= $row['img'] ?>" alt=""></td>
                                                 <td><?= $row['priceEach'] ?></td>
-                                                <td><a href='editbook.php?id=<?= $row['product_id'] ?>'>Edit</a> | <a href='deletebook.php?id=<?= $row['product_id'] ?>'>Delete</a></td>
+                                                <td><?= $row['stock'] ?></td>
                                             </tr>
 
                                         <?php } ?>
@@ -225,7 +231,7 @@ $conn = $pdo->query($query);
                                             <th>Product Style</th>
                                             <th>Image</th>
                                             <th>Price</th>
-                                            <th></th>
+                                            <th>Stock</th>
                                         </tr>
                                     </tfoot>
                                 </table>

@@ -158,12 +158,12 @@ $conn = $pdo->query($query);
                                             <tr>
                                                 <td><?= $row['category_style'] ?></td>
                                                 <td><?= $row['category_description'] ?></td>
-                                                <td><a href='editcategory.php?id=<?= $row['category_style'] ?>'>Edit</a> | <a href='deletecategory.php?id=<?= $row['category_style'] ?>'>Delete</a></td>
+                                                <td class="d-flex"><a class="btn btn-warning" href='editcategory.php?id=<?= $row['category_style'] ?>'>Edit</a> <a class="btn btn-danger ml-2" href='deletecategory.php?id=<?= $row['category_style'] ?>'>Delete</a></td>
                                             </tr>
 
                                         <?php } ?>
                                     </tbody>
-                                    <a href='addcategory.php'>Add New Category</a>
+                                    <a style="margin-bottom: 10px;" class="btn btn-warning" href='addcategory.php'>Add New Category</a>
                                 </table>
                             </div>
                         </div>

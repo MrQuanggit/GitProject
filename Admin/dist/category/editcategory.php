@@ -1,7 +1,7 @@
 <?php
 include('../database/database.php');
 
-$query = 'SELECT * FROM library.category;';
+$query = 'SELECT * FROM quangcasestudy.category;';
 $conn = $pdo->query($query);
 $id = $_GET['id'];
 ?>

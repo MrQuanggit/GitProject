@@ -13,8 +13,6 @@
     include('../database/database.php');
     $query = "INSERT INTO `quangcasestudy`.`products` (`product_id`, `product_name`, `product_description`, `category_style`, `stock`, `img`, `priceEach`, `update_date`, `create_date`, `size`, `slug`) 
     VALUES ('$id', '$name', '$des', '$style', '$stock', '$img', '$priceEach', '$update', '$create', '$size', '$slug');";
-    // var_dump($query);
-    // die();
     $pdo->query($query);
     if($query){
         header("location:./indexproduct.php");

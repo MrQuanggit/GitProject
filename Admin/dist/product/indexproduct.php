@@ -158,13 +158,13 @@ $conn = $pdo->query($query);
                                                 <td><?= $row['product_id'] ?></td>
                                                 <td><?= $row['product_name'] ?></td>
                                                 <td><?= $row['category_style'] ?></td>
-                                                <td><?= $row['img'] ?></td>
+                                                <td><img style="width: 15em" src="<?= $row['img'] ?>" alt=""></td>
                                                 <td><?= $row['priceEach'] ?></td>
-                                                <td><a href='editproduct.php?id=<?= $row['product_id'] ?>'>Edit</a> | <a href='deleteproduct.php?id=<?= $row['product_id'] ?>'>Delete</a></td>
+                                                <td class="d-flex"><a class="btn btn-success" href='editproduct.php?id=<?= $row['product_id'] ?>'>Edit</a> <a class="btn btn-danger ml-2" href='deleteproduct.php?id=<?= $row['product_id'] ?>'>Delete</a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
-                                    <a href='addproduct.php'>Add New Product</a>
+                                    <a style="margin-bottom: 10px;" class="btn btn-success" href='addproduct.php'>Add New Product</a>
                                 </table>
                             </div>
                         </div>
