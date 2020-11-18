@@ -2,10 +2,14 @@
 <?php
 include('./database/database.php');
 $id = $_GET['id'];
-$query = "SELECT * FROM quangcasestudy.products where product_id = $id;";
+$query = "SELECT * FROM quangcasestudy.products INNER JOIN images ON products.product_id = images.product_id where products.product_id = $id;";
 $product = $pdo->query($query);
 $query2 = "SELECT * FROM quangcasestudy.products where category_style = (select category_style from quangcasestudy.products  where product_id = $id);";
 $category = $pdo->query($query2);
+$conn = "UPDATE quangcasestudy.products SET products.view = products.view+1 WHERE (product_id = $id);";
+$pdo->query($conn);
+$img = "SELECT * FROM quangcasestudy.images where product_id = $id;";
+$pdo->query($img);
 
 // Add Product vào Giỏ hàng
 if (isset($_POST['quantity'])) {
@@ -57,8 +61,15 @@ if (isset($_POST['quantity'])) {
             <div class="row">
                 <div class="col-sm-6 col-md-7">
                     <div class="image">
-                        <img class="image1" style="width: 100%;" src="<?= $row['img'] ?>" alt="">
-                        <img class="image2" style="width: 100%;" src="<?= $row['img2'] ?>" alt="">
+                        <img class="image" id="expandedImg" style="width: 100%;" src="<?= $row['img'] ?>" alt="">
+                    </div>
+                    <div class="col-sm-12 col-md-12">
+                    <div>
+                        <img class="subimage" src="<?= $row['img'] ?>" alt="" onclick="myFunction(this);">
+                        <img class="subimage" src="<?= $row['img2'] ?>" alt="" onclick="myFunction(this);">
+                        <img class="subimage" src="<?= $row['img21'] ?>" alt="" onclick="myFunction(this);">
+                        <img class="subimage" src="<?= $row['img31'] ?>" alt="" onclick="myFunction(this);">
+                    </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5">
@@ -70,7 +81,7 @@ if (isset($_POST['quantity'])) {
                     <hr>
                     <span>Số Lượng:</span>
                     <form action="" method="POST">
-                        <input type="text" value="1" name="quantity" size="3">
+                        <input style="text-align: center;" type="text" value="1" name="quantity" size="3">
                         <hr>
                         <input type="submit" class="btn btn-outline-success" style="width: 100%" value="Thêm vào giỏ hàng"></input>
                     </form>
@@ -115,3 +126,10 @@ if (isset($_POST['quantity'])) {
 </body>
 
 </html>
+<script>
+    function myFunction(imgs) {
+        var expandImg = document.getElementById("expandedImg");
+        expandImg.src = imgs.src;
+        expandImg.parentElement.style.display = "block";
+    }
+</script>

@@ -1,6 +1,6 @@
 
   <!-- Footer -->
-  <div class="container-fluid padding">
+  <div class="container-fluid padding" id="footer">
     <div class="row text-center padding">
       <div class="col-12">
         <h2>Liên hệ với chúng tôi</h2>

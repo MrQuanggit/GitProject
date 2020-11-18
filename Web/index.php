@@ -1,7 +1,7 @@
 <?php
 include('./database/database.php');
 session_start();
-$query = 'SELECT * FROM quangcasestudy.products where product_id IN(1,6,12,13,18,19);';
+$query = 'SELECT * FROM quangcasestudy.products ORDER BY products.view DESC limit 0,6';
 $top = $pdo->query($query);
 $query2 = 'SELECT * FROM quangcasestudy.products where product_id IN(20,21,22);';
 $top2 = $pdo->query($query2);
@@ -52,7 +52,7 @@ $top2 = $pdo->query($query2);
   <div class="container">
     <div class="col12">
       <div class="title text-center mb-50">
-        <h3>Sản phẩm bán chạy nhất</h3>
+        <h3><span><img style="width: 30px" src="./image/hot.gif" alt=""></span>Sản phẩm bán chạy nhất<span><img style="width: 30px" src="./image/hot.gif" alt=""></span></h3>
       </div>
     </div>
     <div class="">
@@ -95,8 +95,7 @@ $top2 = $pdo->query($query2);
             <div>
               <a href="product.php?id=<?= $row['product_id'] ?>">
                 <div class="image">
-                  <img class="image1" style="width: 100%;" src="<?= $row['img'] ?>" alt="">
-                  <img class="image2" style="width: 100%;" src="<?= $row['img2'] ?>" alt="">
+                  <img class="image" style="width: 100%;" src="<?= $row['img'] ?>" alt="">
                 </div>
               </a>
             </div>

@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost:3307';
-$dbname = 'library';
+$dbname = 'quangcasestudy';
 $user = 'root';
 $password = 'Quang00210496';
 
