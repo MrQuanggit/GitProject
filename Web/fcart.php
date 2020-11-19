@@ -1,5 +1,7 @@
 <?php
-
+include('./database/database.php');
+session_start();
+$lastId = $_SESSION['lastId'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,7 +40,7 @@
                 </div>
                 <div class="col-sm-6 col-md-8 text-left">
                     <h4>Cám ơn bạn đã mua hàng tại DQ Sneakers</h4>
-                    <p>Mã số đơn hàng của bạn: <span class="btn-outline-warning">CG256398</span></p>
+                    <p>Mã số đơn hàng của bạn: <span class="btn-outline-warning">CG2563<?= $lastId ?></span></p>
                     <p>Thời gian giao hàng dự kiến vào Thứ Sáu, 27/11/2020</p>
                     <div style="float: left; font-size: 40px; color: green; padding-right: 10px;">
                         <i class="fas fa-phone-volume"></i>

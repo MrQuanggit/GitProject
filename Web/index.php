@@ -52,7 +52,7 @@ $top2 = $pdo->query($query2);
   <div class="container">
     <div class="col12">
       <div class="title text-center mb-50">
-        <h3><span><img style="width: 30px" src="./image/hot.gif" alt=""></span>Sản phẩm bán chạy nhất<span><img style="width: 30px" src="./image/hot.gif" alt=""></span></h3>
+        <h3>Sản phẩm bán chạy nhất</h3>
       </div>
     </div>
     <div class="">
@@ -66,7 +66,7 @@ $top2 = $pdo->query($query2);
               </div>
             </a>
             <div class="content">
-              <h5><?= $row['product_name'] ?></h5>
+              <h5><?= $row['product_name'] ?><span><img style="width: 30px" src="./image/hot.gif" alt=""></span></h5>
               <div class="">
                 <div>
                   <h6><?= $row['category_style'] ?></h6>

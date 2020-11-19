@@ -156,8 +156,8 @@ $conn = $pdo->query($query);
                                                 <td><?= $row['phone'] ?></td>
                                                 <td><?= $row['adress'] ?></td>
                                                 <td><?= $row['mail'] ?></td>
-                                                <td class="d-flex"><a class="btn btn-success" href="editcustomer.php?id=<?= $row['customer_id'] ?>">Edit </a>
-                                                    <a class="btn btn-danger ml-2" href="deletecustomer.php?id=<?= $row['customer_id'] ?>"> Delete</a></td>
+                                                <td class="d-flex"><a class="btn btn-outline-primary" href="editcustomer.php?id=<?= $row['customer_id'] ?>">Edit </a>
+                                                    <a class="btn btn-outline-success ml-2" href="deletecustomer.php?id=<?= $row['customer_id'] ?>"> Delete</a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

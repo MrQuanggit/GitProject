@@ -135,6 +135,7 @@ $conn = $pdo->query($query);
                                             <th>Quantity</th>
                                             <th>Customer ID</th>
                                             <th>Price</th>
+                                            <th>Status</th>
                                             <th>Order Comment</th>
                                             <th>Order Date</th>
                                             <th></th>
@@ -147,6 +148,7 @@ $conn = $pdo->query($query);
                                             <th>Quantity</th>
                                             <th>Customer ID</th>
                                             <th>Price</th>
+                                            <th>Status</th>
                                             <th>Order Comment</th>
                                             <th>Order Date</th>
                                             <th></th>
@@ -160,10 +162,12 @@ $conn = $pdo->query($query);
                                                 <td><?= $row['quantity'] ?></td>
                                                 <td><?= $row['customer_id'] ?></td>
                                                 <td><?= $row['priceEach'] ?></td>
+                                                <td><?= $row['status'] ?></td>
                                                 <td><?= $row['order_comment'] ?></td>
                                                 <td><?= $row['order_date'] ?></td>
-                                                <td class="d-flex"><a class="btn btn-success" href="editorder.php?id=<?= $row['product_id'] ?>&order_id=<?= $row['order_id'] ?>">Edit </a>
-                                                <a class="btn btn-danger ml-2" href="deleteorder.php?id=<?= $row['product_id'] ?>&order_id=<?= $row['order_id'] ?>"> Delete</a></td>
+                                                <td class="d-flex"><a class="btn btn-outline-warning" href="editorder.php?id=<?= $row['product_id'] ?>&order_id=<?= $row['order_id'] ?>">Edit </a>
+                                                <a class="btn btn-outline-danger ml-2" href="deleteorder.php?id=<?= $row['product_id'] ?>&order_id=<?= $row['order_id'] ?>"> Delete</a>
+                                                <a class="btn btn-info ml-2" href="status.php?id=<?= $row['product_id'] ?>&order_id=<?= $row['order_id'] ?>"> Confirm</a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

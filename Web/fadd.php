@@ -8,7 +8,7 @@
     $adressCustomer = $_POST['adress'];
     // order
     $comment = $_POST['comment'];
-
+    $text = "Chưa xác nhận";
     // up data
     $query = "insert into quangcasestudy.customers(customer_name, phone, adress, mail) values ('$nameCustomer', '$phoneCustomer', '$adressCustomer', '$mailCustomer');";
     $pdo->query($query);
@@ -22,7 +22,7 @@
                 $row = $product->fetch(PDO::FETCH_ASSOC);
                 $price = $row['priceEach'];
                 $qty = $value['qty'];
-    $query2 = "insert into quangcasestudy.orderdetails(order_id,product_id,quantity,priceEach) values ('$order_id', '$key', '$qty', '$price');";
+    $query2 = "insert into quangcasestudy.orderdetails(order_id,product_id,quantity,priceEach,status) values ('$order_id', '$key', '$qty', '$price', '$text');";
     $pdo->query($query2);
     $conn = "UPDATE quangcasestudy.products SET products.stock = products.stock-$qty WHERE (product_id = $key);";
     $pdo->query($conn);
@@ -30,5 +30,6 @@
 
     if($query2){
         unset($_SESSION['cart']);
+        $_SESSION['lastId'] = $order_id;
         header("location:./fcart.php");
     }

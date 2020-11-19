@@ -89,6 +89,9 @@ if (isset($_GET['logout'])) {
                                 &middot;
                                 <a href="#">Terms &amp; Conditions</a>
                             </div>
+                            <div class="btn btn-outline-dark">
+                                <a href="../../index.php">Web</a>
+                            </div>
                         </div>
                     </div>
                 </footer>
