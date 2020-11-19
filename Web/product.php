@@ -51,7 +51,7 @@ if (isset($_POST['quantity'])) {
     <!-- Chi tiết Product -->
     <div style="padding-top: 80px;">
         <div class="container">
-            <div class="col12">
+            <div class="col12">     
                 <div class="text-left mb-50">
                     <?php while ($row = $product->fetch(PDO::FETCH_ASSOC)) { ?>
                         <h5><?= $row['category_style'] ?> | <?= $row['product_name'] ?></h5>

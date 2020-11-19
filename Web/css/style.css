@@ -129,6 +129,10 @@ footer {
   padding: 1px;
   margin-top: 10px;
   cursor: pointer;
+  opacity: 0.8;
+}
+.subimage:hover {
+  opacity: 1;
 }
 .column img:hover {
   opacity: 1;

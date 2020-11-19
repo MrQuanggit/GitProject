@@ -1,8 +1,13 @@
 <?php
 include('../database/database.php');
 
-$query = 'SELECT * FROM quangcasestudy.products;';
+$query = "SELECT * FROM quangcasestudy.products;";
 $conn = $pdo->query($query);
+
+$query2 = "SELECT * FROM quangcasestudy.category;";
+$conn2 = $pdo->query($query2);
+$result = $conn2->fetchAll();
+$id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +26,7 @@ $conn = $pdo->query($query);
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="../index.php">DQ Sneakers</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -88,10 +93,6 @@ $conn = $pdo->query($query);
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
                         <a class="nav-link" href="indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Products
@@ -112,60 +113,53 @@ $conn = $pdo->query($query);
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    DQ Sneakers
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Tables</h1>
+                    <h1 class="mt-4">Sản Phẩm</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Tables</li>
+                        <li class="breadcrumb-item active">Sản phẩm</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
-                            DataTable Example
+                            Chi tiết sản phẩm
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Product ID</th>
-                                            <th>Product Name</th>
-                                            <th>Product Style</th>
-                                            <th>Product Img</th>
-                                            <th>Price</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Product ID</th>
-                                            <th>Product Name</th>
-                                            <th>Product Style</th>
-                                            <th>Product Img</th>
-                                            <th>Price</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php while ($row = $conn->fetch(PDO::FETCH_ASSOC)) { ?>
-                                            <tr>
-                                                <td><?= $row['product_id'] ?></td>
-                                                <td><?= $row['product_name'] ?></td>
-                                                <td><?= $row['category_style'] ?></td>
-                                                <td><img style="width: 15em" src="<?= $row['img'] ?>" alt=""></td>
-                                                <td><?= $row['priceEach'] ?></td>
-                                                <td class="d-flex"><a class="btn btn-success" href='editproduct.php?id=<?= $row['product_id'] ?>'>Edit</a> <a class="btn btn-danger ml-2" href='deleteproduct.php?id=<?= $row['product_id'] ?>'>Delete</a></td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                    <a style="margin-bottom: 10px;" class="btn btn-success" href='addproduct.php'>Add New Product</a>
-                                </table>
+                                <form action="feditproduct.php" method="post">
+                                    <input type="hidden" name="product_id" value="<?= $id ?>">
+                                    <span class="input-group-text">Product Name</span>
+                                    <input class="form-control" type="text" name="product_name" id="">
+                                    <span class="input-group-text">Product Description</span>
+                                    <input class="form-control" type="text" name="product_description" id="">
+                                    <span class="input-group-text">Product Style</span>
+                                    <select class="input-group-text" name="category_style" id="">
+                                        <?php foreach($result as $value): ?>
+                                            <option value="<?= $value["category_style"] ?>"><?= $value["category_style"] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <span class="input-group-text">Stock</span>
+                                    <input class="form-control" type="text" name="stock" id="">
+                                    <span class="input-group-text">Image</span>
+                                    <input class="form-control" type="text" name="img" id="">
+                                    <span class="input-group-text">Price</span>
+                                    <input class="form-control" type="text" name="priceEach" id="">
+                                    <span class="input-group-text">Size</span>
+                                    <input class="form-control" type="text" name="size" id="">
+                                    <span class="input-group-text">Slug</span>
+                                    <input class="form-control" type="text" name="slug" id="">
+                                    <span class="input-group-text">Update date</span>
+                                    <input class="form-control" type="text" name="update_date" id="">
+                                    <span class="input-group-text" class="input-group-text">Create date</span>
+                                    <input class="form-control" type="text" name="create_date" id="">
+                                    <input class="input-group-text" type="submit" value="Update Product">
+                                </form>
                             </div>
                         </div>
                     </div>

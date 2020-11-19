@@ -1,6 +1,6 @@
 <?php
 include('./database/database.php');
-
+session_start();
 if (isset($_POST['search'])) {
     $search = $_POST['search'];
     $query = "SELECT * FROM quangcasestudy.products where product_name like '%$search%'";

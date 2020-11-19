@@ -3,6 +3,7 @@ include('../database/database.php');
 
 $query = 'SELECT * FROM quangcasestudy.category;';
 $conn = $pdo->query($query);
+$id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,7 @@ $conn = $pdo->query($query);
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="../index.php">DQ Sneakers</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -88,10 +89,6 @@ $conn = $pdo->query($query);
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
                         <a class="nav-link" href="../product/indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Products
@@ -112,33 +109,28 @@ $conn = $pdo->query($query);
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    DQ Sneakers
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid">
-                    <h1 class="mt-4">Tables</h1>
+            <div class="container-fluid">
+                    <h1 class="mt-4">Thể Loại</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Tables</li>
+                        <li class="breadcrumb-item active">Thể loại</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                            <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                            .
-                        </div>
-                    </div>
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
-                            DataTable Example
+                            Chi tiết thể loại
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <form action="feditcategory.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $id ?>">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Category_Name</th>
@@ -153,18 +145,16 @@ $conn = $pdo->query($query);
                                             <th></th>
                                         </tr>
                                     </tfoot>
-                                    <tbody>
-                                        <?php while ($row = $conn->fetch(PDO::FETCH_ASSOC)) { ?>
+                                        <tbody>
                                             <tr>
-                                                <td><?= $row['category_style'] ?></td>
-                                                <td><?= $row['category_description'] ?></td>
-                                                <td class="d-flex"><a class="btn btn-warning" href='editcategory.php?id=<?= $row['category_style'] ?>'>Edit</a> <a class="btn btn-danger ml-2" href='deletecategory.php?id=<?= $row['category_style'] ?>'>Delete</a></td>
+                                                
+                                                <td><input type="text" name="category_style" id=""></td>
+                                                <td><input type="text" name="category_description" id=""></td>
+                                                <td><input type="submit" value="Update"></td>
                                             </tr>
-
-                                        <?php } ?>
-                                    </tbody>
-                                    <a style="margin-bottom: 10px;" class="btn btn-warning" href='addcategory.php'>Add New Category</a>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </form>
                             </div>
                         </div>
                     </div>

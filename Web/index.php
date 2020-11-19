@@ -95,7 +95,8 @@ $top2 = $pdo->query($query2);
             <div>
               <a href="product.php?id=<?= $row['product_id'] ?>">
                 <div class="image">
-                  <img class="image" style="width: 100%;" src="<?= $row['img'] ?>" alt="">
+                  <img class="image1" style="width: 100%;" src="<?= $row['img'] ?>" alt="">
+                  <img class="image2" style="width: 100%;" src="<?= $row['img2'] ?>" alt="">
                 </div>
               </a>
             </div>

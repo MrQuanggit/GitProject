@@ -48,6 +48,7 @@
         <div class="col-12">
           <hr class="light-100">
           <h5>2020 &copy; DQ Sneakers<img src="./image/Logo.svg" style="width: 15px"></h5>
+          <a href="./admin/index.php">Admin Page</a>
         </div>
       </div>
     </div>
