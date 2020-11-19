@@ -1,12 +1,8 @@
 <?php
 include('../database/database.php');
 
-$query = "SELECT * FROM quangcasestudy.products;";
+$query = 'SELECT * FROM quangcasestudy.customers';
 $conn = $pdo->query($query);
-
-$query2 = "SELECT * FROM quangcasestudy.category;";
-$conn2 = $pdo->query($query2);
-$result = $conn2->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +21,7 @@ $result = $conn2->fetchAll();
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="../index.php">DQ Sneakers</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -73,9 +69,9 @@ $result = $conn2->fetchAll();
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="../login.php">Login</a>
-                                        <a class="nav-link" href="../register.php">Register</a>
-                                        <a class="nav-link" href="../password.php">Forgot Password</a>
+                                        <a class="nav-link" href="login.php">Login</a>
+                                        <a class="nav-link" href="register.php">Register</a>
+                                        <a class="nav-link" href="password.php">Forgot Password</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -92,10 +88,6 @@ $result = $conn2->fetchAll();
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
                         <a class="nav-link" href="indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Products
@@ -116,54 +108,60 @@ $result = $conn2->fetchAll();
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    DQ Sneakers
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Tables</h1>
+                    <h1 class="mt-4">Sản Phẩm</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Tables</li>
+                        <li class="breadcrumb-item active">Sản phẩm</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
-                            DataTable Example
+                            Chi tiết sản phẩm
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="faddproduct.php" method="post">
-                                    <span class="input-group-text">Product ID</span>
-                                    <input class="form-control" type="text" name="product_id" id="">
-                                    <span class="input-group-text">Product Name</span>
-                                    <input class="form-control" type="text" name="product_name" id="">
-                                    <span class="input-group-text">Product Description</span>
-                                    <input class="form-control" type="text" name="product_description" id="">
-                                    <span class="input-group-text">Product Style</span>
-                                    <select class="input-group-text" name="category_style" id="">
-                                        <?php foreach($result as $value): ?>
-                                            <option value="<?= $value["category_style"] ?>"><?= $value["category_style"] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                    <span class="input-group-text">Stock</span>
-                                    <input class="form-control" type="text" name="stock" id="">
-                                    <span class="input-group-text">Image</span>
-                                    <input class="form-control" type="text" name="img" id="">
-                                    <span class="input-group-text">Price</span>
-                                    <input class="form-control" type="text" name="priceEach" id="">
-                                    <span class="input-group-text">Size</span>
-                                    <input class="form-control" type="text" name="size" id="">
-                                    <span class="input-group-text">Slug</span>
-                                    <input class="form-control" type="text" name="slug" id="">
-                                    <span class="input-group-text">Update date</span>
-                                    <input class="form-control" type="text" name="update_date" id="">
-                                    <span class="input-group-text" class="input-group-text">Create date</span>
-                                    <input class="form-control" type="text" name="create_date" id="">
-                                    <input class="input-group-text" type="submit" value="Add New Product">
-                                </form>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Phone</th>
+                                            <th>Adress</th>
+                                            <th>Mail</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Customer ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Phone</th>
+                                            <th>Adress</th>
+                                            <th>Mail</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php while ($row = $conn->fetch(PDO::FETCH_ASSOC)) { ?>
+                                            <tr>
+                                                <td><?= $row['customer_id'] ?></td>
+                                                <td><?= $row['customer_name'] ?></td>
+                                                <td><?= $row['phone'] ?></td>
+                                                <td><?= $row['adress'] ?></td>
+                                                <td><?= $row['mail'] ?></td>
+                                                <td class="d-flex"><a class="btn btn-success" href="editcustomer.php?id=<?= $row['customer_id'] ?>">Edit </a>
+                                                    <a class="btn btn-danger ml-2" href="deletecustomer.php?id=<?= $row['customer_id'] ?>"> Delete</a></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

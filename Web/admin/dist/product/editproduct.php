@@ -101,13 +101,13 @@ $id = $_GET['id'];
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Category
                         </a>
-                        <a class="nav-link" href="book/tables.php">
+                        <a class="nav-link" href="../order/indexorder.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Table
+                            Order
                         </a>
-                        <a class="nav-link" href="book/tables.php">
+                        <a class="nav-link" href="../customer/indexcustomer.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Table
+                            Customer
                         </a>
                     </div>
                 </div>
