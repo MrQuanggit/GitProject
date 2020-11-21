@@ -1,7 +1,14 @@
 <?php
 include('../../../database/database.php');
-$query = 'SELECT * FROM quangcasestudy.category;';
-$conn = $pdo->query($query);
+include('../../../database/customers.php');
+session_start();
+if (empty($_SESSION['login_user'])) {
+    header('location:../index.php');
+}
+$id = $_GET['id'];
+$user_name = $_GET['user_name'];
+$user_password = $_GET['user_password'];
+$roles = $_GET['roles'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +27,7 @@ $conn = $pdo->query($query);
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="../index.php">DQ Sneakers</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -68,9 +75,9 @@ $conn = $pdo->query($query);
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="../login.php">Login</a>
-                                        <a class="nav-link" href="../register.php">Register</a>
-                                        <a class="nav-link" href="../password.php">Forgot Password</a>
+                                        <a class="nav-link" href="login.php">Login</a>
+                                        <a class="nav-link" href="register.php">Register</a>
+                                        <a class="nav-link" href="password.php">Forgot Password</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -111,56 +118,34 @@ $conn = $pdo->query($query);
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    DQ Sneakers
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Thể Loại</h1>
+                <h1 class="mt-4">Khách Hàng</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Thể loại</li>
+                        <li class="breadcrumb-item active">Khách hàng</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                            <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                            .
-                        </div>
-                    </div>
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table mr-1"></i>
-                            DataTable Example
+                            Chi tiết sản phẩm
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="faddcategory.php" method="post">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Category_Name</th>
-                                            <th>Category_Description</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Category_Name</th>
-                                            <th>Category_Description</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td><input type="text" name="category_style" id=""></td>
-                                                <td><input type="text" name="category_description" id=""></td>
-                                                <td><input type="submit" value="Add"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <form action="fupdateuser.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $id ?>">
+                                    <span class="input-group-text">User Name</span>
+                                    <input class="form-control" type="text" name="user_name" value="<?= $user_name ?>">
+                                    <span class="input-group-text">User Password</span>
+                                    <input class="form-control" type="text" name="user_password" value="<?= $user_password ?>">
+                                    <span class="input-group-text">Roles</span>
+                                    <input class="form-control" type="text" name="roles" value="<?= $roles ?>">
+                                    <input class="input-group-text" type="submit" value="Update User">
                                 </form>
                             </div>
                         </div>

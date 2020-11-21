@@ -1,7 +1,5 @@
 <?php
-include('../../../database/database.php');
-$query = 'SELECT * FROM quangcasestudy.category;';
-$conn = $pdo->query($query);
+include('../../../database/user.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,10 +116,10 @@ $conn = $pdo->query($query);
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Thể Loại</h1>
+                    <h1 class="mt-4">Người dùng</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Thể loại</li>
+                        <li class="breadcrumb-item active">Người dùng</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
@@ -137,26 +135,29 @@ $conn = $pdo->query($query);
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="faddcategory.php" method="post">
+                                <form action="fadduser.php" method="post">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Category_Name</th>
-                                            <th>Category_Description</th>
+                                            <th>User Name</th>
+                                            <th>User Password</th>
+                                            <th>Role</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Category_Name</th>
-                                            <th>Category_Description</th>
+                                            <th>User Name</th>
+                                            <th>User Password</th>
+                                            <th>Role</th>
                                             <th></th>
                                         </tr>
                                     </tfoot>
                                         <tbody>
                                             <tr>
-                                                <td><input type="text" name="category_style" id=""></td>
-                                                <td><input type="text" name="category_description" id=""></td>
+                                                <td><input type="text" name="user_name"></td>
+                                                <td><input type="text" name="user_password"></td>
+                                                <td><input type="text" name="roles"></td>
                                                 <td><input type="submit" value="Add"></td>
                                             </tr>
                                         </tbody>

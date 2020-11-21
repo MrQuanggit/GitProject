@@ -1,8 +1,5 @@
 <?php
 include('../../../database/database.php');
-if (empty($_SESSION['login_user'])) {
-    header('location:../index.php');
-}
 $query2 = "SELECT * FROM quangcasestudy.category;";
 $conn2 = $pdo->query($query2);
 $result = $conn2->fetchAll();
@@ -91,10 +88,6 @@ $result = $conn2->fetchAll();
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
                         <a class="nav-link" href="indexproduct.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Products
@@ -110,6 +103,10 @@ $result = $conn2->fetchAll();
                         <a class="nav-link" href="../customer/indexcustomer.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Customer
+                        </a>
+                        <a class="nav-link" href="../user/indexuser.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            User
                         </a>
                     </div>
                 </div>

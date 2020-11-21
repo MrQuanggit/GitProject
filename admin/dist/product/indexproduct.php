@@ -106,6 +106,10 @@ $conn = $productDB->getAll();
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Customer
                         </a>
+                        <a class="nav-link" href="../user/indexuser.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            User
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
