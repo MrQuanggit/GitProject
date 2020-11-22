@@ -9,7 +9,7 @@ Các chức năng chính của dự án:
 - Sẽ kết nối với trang web chính bán hàng để khách hàng có thể xem, chọn sản phẩm và tạo đơn order về database và trang dashboard.
 <img src="./image/ERD.png">.
 2. Trang quản lí dashboard để chủ shop và nhân viên cửa hàng có thể đăng nhập vào:
-- Có phần login đăng nhập theo tài khoản được tạo trước, nhân viên sẽ chỉ được xem tồn kho sản phẩm và xử lí những order của khách, chỉ có tài khoản admin của chủ shop mới có thể thêm, sửa, xóa sản phẩm và tạo tài khoản nhân viên.
+- Có phần login đăng nhập theo tài khoản được tạo trước tài khoản admin của chủ shop có thể thêm, sửa, xóa sản phẩm và tạo tài khoản nhân viên.
 - Quản lí category, product, user, customers, ...
 - Ngoài ra có thể phát triển thêm một vài tính năng như xem tồn kho, xác nhận đơn hàng của từng khách hàng, ...
 3. Trang chủ nơi khách hàng xem sản phẩm:
