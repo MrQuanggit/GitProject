@@ -27,9 +27,9 @@ Các chức năng chính của dự án:
 +Chi tiết sản phẩm, thêm vào giỏ hàng
 +Các sản phẩm liên quan (cùng nhóm hàng)
 +Footer
-- Trang chi tiết sản phẩm hay nhóm hàng:
+- Trang chi tiết nhóm hàng:
 +Navbar.
-+Chi tiết sản phẩm, thêm vào giỏ hàng
++Chi tiết sản phẩm theo nhóm hàng, tổng 6 nhóm hàng.
 +Các sản phẩm liên quan (cùng nhóm hàng)
 +Footer
 - Trang tìm kiếm:
